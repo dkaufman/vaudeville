@@ -18,11 +18,16 @@ class App extends Spine.Controller
   constructor: ->
     super
     
+    @routes
+      "/": ->
+        console.log("home")
+
     # Initialize controllers:
     #  @append(@items = new App.Items)
     #  ...
-    @append(@messages = new App.Messages)
+    #@append(@messages = new App.Messages)
+    #@append(@home = new App.Home)
     
-    Spine.Route.setup(history: true)
+    Spine.Route.setup()
 
 window.App = App
