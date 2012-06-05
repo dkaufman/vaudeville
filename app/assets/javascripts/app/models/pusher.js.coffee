@@ -3,7 +3,7 @@
 $ = jQuery
 
 class PusherHandler extends Spine.Module
-  
+
   constructor: (@options = {}) ->
     @options.key or= $('meta[name=pusher-key]').attr('content')
 
@@ -17,14 +17,16 @@ class PusherHandler extends Spine.Module
     @channel.bind_all @processWithoutAjax
 
   process: (type, msg) =>
-    klass = eval(msg.class)
+    if msg
+      klass = eval(msg.class)
+    else
     switch type
       when 'create'
         klass.create msg.record
       when 'test'
         console.log klass
       else
-        throw 'Unknown type:' + type
+        console.log type
 
   processWithoutAjax: =>
     args = arguments
