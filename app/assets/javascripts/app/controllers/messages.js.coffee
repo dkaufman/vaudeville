@@ -73,6 +73,7 @@ class Messages extends Spine.Controller
 
     @input.val ""
     @input.focus()
+    Message.fetch()
     false
 
 window.Messages = Messages

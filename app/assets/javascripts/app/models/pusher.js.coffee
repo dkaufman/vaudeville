@@ -22,7 +22,7 @@ class PusherHandler extends Spine.Module
     else
     switch type
       when 'create'
-        klass.create msg.record
+        klass.create msg.record unless klass.exists(msg.record.id)
       when 'test'
         console.log klass
       else
