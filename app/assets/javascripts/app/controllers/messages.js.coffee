@@ -43,15 +43,22 @@ class Messages extends Spine.Controller
     messages = Message.all()
     @items.empty()
     Message.each(@addOne)
+    @scroll()
+
+  scroll: =>
+    objDiv = $("#stuff")[0]
+    objDiv.scrollTop = objDiv.scrollHeight
+    console.log(objDiv.scrollTop, objDiv.scrollHeight)
 
   addOne: (item) =>
     return unless item.forRoom(Sidebar.room())
     msgItem = new MessagesItem(item)
     @items.append msgItem.render()
+    @scroll()
 
   addNew: (item) =>
     @addOne(item)
-    
+
   changeRoom: (room) =>
     @room = room
     @render()
