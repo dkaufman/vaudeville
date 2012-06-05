@@ -48,7 +48,6 @@ class Messages extends Spine.Controller
   scroll: =>
     objDiv = $("#stuff")[0]
     objDiv.scrollTop = objDiv.scrollHeight
-    console.log(objDiv.scrollTop, objDiv.scrollHeight)
 
   addOne: (item) =>
     return unless item.forRoom(Sidebar.room())

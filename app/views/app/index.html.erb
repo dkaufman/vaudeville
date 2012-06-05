@@ -1,3 +1,14 @@
+<%= content_for(:head) do %>
+  <script type="text/javascript">
+  $(function(){
+    $("textarea").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#scroll").click();
+        }
+    });
+  })
+  </script>
+<% end %>
 <div id="header">
   <h1 id="logo"><a href="/">Speakeasy</a></h1>
 </div><!-- end header -->
