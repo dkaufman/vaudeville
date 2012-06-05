@@ -13,14 +13,14 @@ class PusherHandler extends Spine.Module
       beforeSend: (xhr) =>
         xhr.setRequestHeader 'X-Session-ID', @pusher.connection.socket_id
 
-    @room = @pusher.subscribe 'testing'
-    @room.bind_all @processWithoutAjax
+    @channel = @pusher.subscribe 'testing'
+    @channel.bind_all @processWithoutAjax
 
   process: (type, msg) =>
     klass = eval(msg.class)
     switch type
       when 'create'
-        klass.create msg
+        klass.create msg.record
       when 'test'
         console.log klass
       else

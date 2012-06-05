@@ -57,6 +57,7 @@ class Messages extends Spine.Controller
     @render()
 
   create: ->
+    alert "hi"
     throw "Room required"  unless Sidebar.room()
     value = @input.val()
     return false  unless value

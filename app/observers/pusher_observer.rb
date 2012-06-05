@@ -1,9 +1,9 @@
 class PusherObserver < ActiveRecord::Observer
-  # observe :message
+  observe :message
 
-  # def after_create(rec)
-  #   publish(:create, rec)
-  # end
+  def after_create(rec)
+    publish(:create, rec)
+  end
   
   # def after_update(rec)
   #   publish(:update, rec)
@@ -13,17 +13,16 @@ class PusherObserver < ActiveRecord::Observer
   #   publish(:destroy, rec)
   # end
   
-  # protected
+  protected
 
-  # def publish(type, rec)
-  #   Pusher['observer'].trigger!(
-  #     type, 
-  #     {
-  #       body:   rec.body,
-  #       class:  rec.class.name,
-  #       record: rec
-  #     }, 
-  #     rec.session_id
-  #   )
-  # end
+  def publish(type, rec)
+    Pusher['testing'].trigger!(
+      type, 
+      {
+        id:   rec.id,
+        class:  rec.class.name,
+        record: rec
+      }
+    )
+  end
 end
